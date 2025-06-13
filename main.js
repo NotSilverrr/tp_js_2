@@ -3,9 +3,19 @@ let menu = [];
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let orders = JSON.parse(localStorage.getItem('orders')) || [];
 
-const main_div = document.getElementById("app");
-const menuDivElem = document.createElement('div');
+let wallet = localStorage.getItem('wallet') || 200;
+if (isNaN(wallet)) {
+    wallet = 200;
+    localStorage.setItem('wallet', wallet);
+}
 
+const main_div = document.getElementById("app");
+
+const walletDivElem = document.createElement('div');
+walletDivElem.id = 'wallet-container';
+main_div.insertBefore(walletDivElem, main_div.firstChild);
+
+const menuDivElem = document.createElement('div');
 menuDivElem.id = 'menu';
 main_div.appendChild(menuDivElem);
 
@@ -32,6 +42,14 @@ function saveCart() {
 function saveOrders() {
     localStorage.setItem('orders', JSON.stringify(orders));
 }
+function saveWallet() {
+    localStorage.setItem('wallet', wallet);
+}
+
+function showWallet() {
+    walletDivElem.innerHTML = `<span class="wallet-label">Portefeuille :</span> <span class="wallet-amount">${wallet} €</span>`;
+}
+
 
 async function loadMenu() {
     try {
@@ -161,6 +179,11 @@ function commander() {
     const tva = total * 0.2;
     const total_ht = total - tva;
 
+    if (total > wallet) {
+        showToast("Vous n'avez pas assez d'argent");
+        throw new Error("Vous n'avez pas assez d'argent");
+    }
+
     let modal_html = "<div style='background:#fff;padding:20px;border-radius:8px;text-align:left;'>";
     modal_html += "<h3>Récapitulatif</h3>";
     modal_html += "<ul style='list-style:none;padding:0;'>";
@@ -179,6 +202,9 @@ function commander() {
     document.getElementById('validate-order').onclick = () => {
         showToast('Commande validée !');
         orders.push({"products":cart,"total": total,"status": "en préparation"});
+        wallet -= total;
+        saveWallet();
+        showWallet();
         saveOrders();
         cart = [];
         saveCart();
@@ -303,3 +329,4 @@ function showToast(message) {
 loadMenu();
 showCart();
 showOrders();
+showWallet();
