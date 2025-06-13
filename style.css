@@ -1,0 +1,256 @@
+body {
+    background: #f6f8fa;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+#menu,
+#cart,
+#orders {
+    margin: 24px auto;
+    max-width: 900px;
+}
+
+#menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: center;
+}
+
+.menu-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu-card img {
+    width: 160px;
+    height: 160px;
+    border-radius: 16px;
+    margin-bottom: 18px;
+}
+
+.menu-card h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.2rem;
+}
+
+.menu-card p {
+    margin: 0 0 14px 0;
+    font-weight: bold;
+    color: #1a73e8;
+}
+
+.ajouter {
+    background: linear-gradient(90deg,#1a73e8,#5ec6fa);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.ajouter:hover {
+    background: linear-gradient(90deg,#1761c7,#49b0e7);
+}
+
+#cart,
+#orders {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px;
+}
+
+#cart h2,
+#orders h2 {
+    margin-top: 0;
+}
+
+.cart-list,
+.order-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px 0;
+}
+
+.cart-item,
+.order-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+}
+
+.cart-item:last-child,
+.order-item:last-child {
+    border-bottom: none;
+}
+
+.cart-qty-input {
+    width: 48px;
+    padding: 4px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 0 8px;
+    font-size: 1rem;
+}
+
+.cart-price {
+    color: #1a73e8;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.cart-total {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 18px;
+}
+
+.cart-btn,
+.order-btn,
+.modal-btn {
+    background: linear-gradient(90deg,#1a73e8,#5ec6fa);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 12px;
+}
+
+.cart-btn:hover,
+.order-btn:hover,
+.modal-btn:hover {
+    background: linear-gradient(90deg,#1761c7,#49b0e7);
+}
+
+#modal {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+
+#modal .modal-content,
+#modal > div {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    padding: 32px 40px;
+    min-width: 340px;
+    max-width: 95vw;
+    margin: 0 auto;
+    text-align: left;
+}
+
+#modal h3 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #1a73e8;
+    letter-spacing: 0.5px;
+}
+
+#modal ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 18px 0;
+}
+
+#modal li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 1rem;
+}
+
+#modal li:last-child {
+    border-bottom: none;
+}
+
+#modal p {
+    margin: 8px 0;
+    font-size: 1.05rem;
+}
+
+#modal button,
+#modal .modal-btn {
+    background: linear-gradient(90deg,#1a73e8,#5ec6fa);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 10px 8px 0 0;
+}
+
+#modal button:hover,
+#modal .modal-btn:hover {
+    background: linear-gradient(90deg,#1761c7,#49b0e7);
+}
+
+.chart-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    padding: 32px;
+    max-width: 900px;
+    margin: 24px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.chart-card h2 {
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: #1a73e8;
+}
+
+#pie-chart {
+    display: block;
+    margin: 0 auto;
+    width: 300px !important;
+    height: 300px !important;
+}
+
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 32px;
+    transform: translateX(-50%);
+    background: #323232;
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 16px;
+    font-size: 1.08rem;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+    z-index: 2000;
+    opacity: 1;
+    pointer-events: none;
+    animation: toast-in 0.35s, toast-out 0.5s 2s forwards;
+}
+
+@keyframes toast-in {
+    from { opacity: 0; transform: translateX(-50%) translateY(40px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+@keyframes toast-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
